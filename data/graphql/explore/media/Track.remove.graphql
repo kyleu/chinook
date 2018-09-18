@@ -1,0 +1,17 @@
+# Generated File
+# Remove a single Track entity from the system.
+mutation TrackRemove {
+  track {
+    remove(trackId: 0) {
+      trackId
+      name
+      albumId
+      mediaTypeId
+      genreId
+      composer
+      milliseconds
+      bytes
+      unitPrice
+    }
+  }
+}

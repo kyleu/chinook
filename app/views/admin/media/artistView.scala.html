@@ -1,0 +1,42 @@
+@* Generated File *@
+@(user: models.user.SystemUser, model: models.media.Artist, notes: Seq[models.note.Note], debug: Boolean)(
+    implicit request: Request[AnyContent], session: Session, flash: Flash, traceData: util.tracing.TraceData
+)@traceData.logViewClass(getClass)@views.html.admin.layout.page(user, "explore", s"Artist [${model.artistId}]") {
+  <div class="collection with-header">
+    <div class="collection-header">
+      <div class="right"><a class="theme-text" href="@controllers.admin.media.routes.ArtistController.editForm(model.artistId)">Edit</a></div>
+      <div class="right"><a class="theme-text remove-link" onclick="return confirm('Are you sure you want to remove this Artist?')" href="@controllers.admin.media.routes.ArtistController.remove(model.artistId)">Remove</a></div>
+      <h5>
+        <a class="theme-text" href="@controllers.admin.media.routes.ArtistController.list()"><i class="fa @models.template.Icons.artist"></i></a>
+        Artist [@model.artistId]
+      </h5>
+    </div>
+    <div class="collection-item">
+      <table class="highlight">
+        <tbody>
+          <tr>
+            <th>Artist Id</th>
+            <td>@model.artistId</td>
+          </tr>
+          <tr>
+            <th>Name</th>
+            <td>@model.name</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    @views.html.admin.note.notes(notes, "artist", "Artist", model.artistId)
+  </div>
+
+  <ul id="model-relations" class="collapsible" data-collapsible="expandable">
+    <li id="relation-album-artistId" data-table="album" data-field="artistId" data-singular="Album" data-plural="Albums" data-url="@controllers.admin.media.routes.AlbumController.byArtistId(model.artistId, limit = Some(5))">
+      <div class="collapsible-header">
+        <i class="fa @models.template.Icons.album"></i>
+        <span class="title">Albums</span>&nbsp;by Artist Id
+      </div>
+      <div class="collapsible-body"><span>Loading...</span></div>
+    </li>
+  </ul>
+  @views.html.components.includeScalaJs(debug)
+  <script>$(function() { new RelationService('@controllers.admin.media.routes.ArtistController.relationCounts(model.artistId)') });</script>
+}

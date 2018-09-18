@@ -1,0 +1,10 @@
+# Generated File
+# Remove a single PlaylistTrack entity from the system.
+mutation PlaylistTrackRemove {
+  playlistTrack {
+    remove(playlistId: 0, trackId: 0) {
+      playlistId
+      trackId
+    }
+  }
+}

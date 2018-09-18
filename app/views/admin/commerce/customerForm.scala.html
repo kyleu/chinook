@@ -1,0 +1,39 @@
+@* Generated File *@
+@(user: models.user.SystemUser, model: models.commerce.Customer, title: String, cancel: Call, act: Call, isNew: Boolean = false, debug: Boolean = false)(
+    implicit request: Request[AnyContent], session: Session, flash: Flash, traceData: util.tracing.TraceData
+)@traceData.logViewClass(getClass)@views.html.admin.layout.page(user, "explore", title) {
+  <form id="form-edit-customer" action="@act" method="post">
+    <div class="collection with-header">
+      <div class="collection-header">
+        <div class="right"><button type="submit" class="btn theme">@if(isNew) {Create} else {Save} Customer</button></div>
+        <div class="right"><a href="@cancel" class="theme-text cancel-link">Cancel</a></div>
+        <h5><i class="fa @models.template.Icons.customer"></i> @title</h5>
+      </div>
+      <div class="collection-item">
+        <table>
+          <tbody>
+            @views.html.components.form.textField(selected = isNew, key = "customerId", title = "Customer Id", value = Some(model.customerId.toString), nullable = false, dataType = "long")
+            @views.html.components.form.textField(selected = isNew, key = "firstName", title = "First Name", value = Some(model.firstName.toString), nullable = false)
+            @views.html.components.form.textField(selected = isNew, key = "lastName", title = "Last Name", value = Some(model.lastName.toString), nullable = false)
+            @views.html.components.form.textField(selected = isNew, key = "company", title = "Company", value = model.company.map(_.toString), nullable = true)
+            @views.html.components.form.textField(selected = isNew, key = "address", title = "Address", value = model.address.map(_.toString), nullable = true)
+            @views.html.components.form.textField(selected = isNew, key = "city", title = "City", value = model.city.map(_.toString), nullable = true)
+            @views.html.components.form.textField(selected = isNew, key = "state", title = "State", value = model.state.map(_.toString), nullable = true)
+            @views.html.components.form.textField(selected = isNew, key = "country", title = "Country", value = model.country.map(_.toString), nullable = true)
+            @views.html.components.form.textField(selected = isNew, key = "postalCode", title = "Postal Code", value = model.postalCode.map(_.toString), nullable = true)
+            @views.html.components.form.textField(selected = isNew, key = "phone", title = "Phone", value = model.phone.map(_.toString), nullable = true)
+            @views.html.components.form.textField(selected = isNew, key = "fax", title = "Fax", value = model.fax.map(_.toString), nullable = true)
+            @views.html.components.form.textField(selected = isNew, key = "email", title = "Email", value = Some(model.email.toString), nullable = false)
+            @views.html.components.form.autocompleteField(
+              selected = isNew, key = "supportRepId", title = "Support Rep Id", value = model.supportRepId.map(_.toString), nullable = true, dataType = "long",
+              call = controllers.admin.commerce.routes.EmployeeController.autocomplete(), acType = ("employee", "Employee"), icon = models.template.Icons.employee
+            )
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </form>
+}
+@views.html.components.includeScalaJs(debug)
+@views.html.components.includeAutocomplete(debug)
+<script>$(function() { new FormService('form-edit-customer'); })</script>

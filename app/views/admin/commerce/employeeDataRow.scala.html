@@ -1,0 +1,16 @@
+@* Generated File *@
+@(model: models.commerce.Employee)<tr>
+  <td><a href="@controllers.admin.commerce.routes.EmployeeController.view(model.employeeId)" class="theme-text">@model.employeeId</a></td>
+  <td>@model.lastName</td>
+  <td>@model.firstName</td>
+  <td>@model.title</td>
+  <td>
+    @model.reportsTo
+    @model.reportsTo.map { v =>
+      <a class="theme-text" href="@controllers.admin.commerce.routes.EmployeeController.view(v)">
+        <i class="fa @models.template.Icons.employee"></i>
+      </a>
+    }
+  </td>
+  <td>@model.email</td>
+</tr>

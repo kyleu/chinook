@@ -1,0 +1,10 @@
+# Generated File
+# Updates a single PlaylistTrack entity using the provided fields.
+mutation PlaylistTrackUpdate {
+  playlistTrack {
+    update(playlistId: 0, trackId: 0, fields: [{k: "", v: ""}]) {
+      playlistId
+      trackId
+    }
+  }
+}

@@ -1,0 +1,10 @@
+# Generated File
+# Creates a new Playlist entity.
+mutation PlaylistCreate {
+  playlist {
+    create(fields: [{k: "", v: ""}]) {
+      playlistId
+      name
+    }
+  }
+}

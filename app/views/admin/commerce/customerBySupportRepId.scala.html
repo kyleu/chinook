@@ -1,0 +1,32 @@
+@* Generated File *@
+@(user: models.user.SystemUser, supportRepId: Long, modelSeq: Seq[models.commerce.Customer], orderBy: Option[String], orderAsc: Boolean, limit: Int, offset: Int)(
+    implicit request: Request[AnyContent], session: Session, flash: Flash, traceData: util.tracing.TraceData
+)@traceData.logViewClass(getClass)
+@views.html.admin.explore.list(
+  user = user,
+  model = "Customer",
+  modelPlural = "Customers",
+  icon = models.template.Icons.customer,
+  cols = Seq(
+    "customerId" -> "Customer Id",
+    "firstName" -> "First Name",
+    "lastName" -> "Last Name",
+    "company" -> "Company",
+    "email" -> "Email",
+    "supportRepId" -> "Support Rep Id"
+  ),
+  orderBy = orderBy,
+  orderAsc = orderAsc,
+  totalCount = None,
+  rows = modelSeq.map(model => views.html.admin.commerce.customerDataRow(model)),
+  calls = models.result.web.ListCalls(
+    orderBy = Some(controllers.admin.commerce.routes.CustomerController.bySupportRepId(supportRepId, _, _, Some(limit), Some(0))),
+    search = None,
+    next = controllers.admin.commerce.routes.CustomerController.bySupportRepId(supportRepId, orderBy, orderAsc, Some(limit), Some(offset + limit)),
+    prev = controllers.admin.commerce.routes.CustomerController.bySupportRepId(supportRepId, orderBy, orderAsc, Some(limit), Some(offset - limit)),
+  ),
+  limit = limit,
+  offset = offset,
+  q = None,
+  fullUI = false
+)

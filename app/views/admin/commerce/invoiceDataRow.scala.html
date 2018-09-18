@@ -1,0 +1,12 @@
+@* Generated File *@
+@(model: models.commerce.Invoice)<tr>
+  <td><a href="@controllers.admin.commerce.routes.InvoiceController.view(model.invoiceId)" class="theme-text">@model.invoiceId</a></td>
+  <td>
+    @model.customerId
+    <a class="theme-text" href="@controllers.admin.commerce.routes.CustomerController.view(model.customerId)">
+      <i class="fa @models.template.Icons.customer"></i>
+    </a>
+  </td>
+  <td>@model.invoiceDate</td>
+  <td>@model.total</td>
+</tr>

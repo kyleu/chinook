@@ -1,0 +1,247 @@
+// Generated File
+{
+  "/admin/media/genre": {
+    "get": {
+      "summary": "Queries and filters the system Genre entities.",
+      "operationId": "media.Genre.list",
+      "tags": ["media"],
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/q"
+        },
+        {
+          "$ref": "#/components/parameters/orderBy"
+        },
+        {
+          "$ref": "#/components/parameters/orderAsc"
+        },
+        {
+          "$ref": "#/components/parameters/limit"
+        },
+        {
+          "$ref": "#/components/parameters/offset"
+        }
+      ],
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/media.GenreResult"
+              }
+            }
+          }
+        },
+        "4XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.NotFound"
+              }
+            }
+          }
+        },
+        "5XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.Error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "post": {
+      "summary": "Creates a new Genre entity.",
+      "operationId": "media.Genre.create",
+      "tags": ["media"],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/common.DataField"
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/media.Genre"
+              }
+            }
+          }
+        },
+        "4XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.NotFound"
+              }
+            }
+          }
+        },
+        "5XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/admin/media/genre/{genreId}": {
+    "get": {
+      "summary": "View the Genre entity matching the provided [genreId].",
+      "operationId": "media.Genre.view",
+      "tags": ["media"],
+      "parameters": [
+        {
+          "name": "genreId",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/media.Genre"
+              }
+            }
+          }
+        },
+        "4XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.NotFound"
+              }
+            }
+          }
+        },
+        "5XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.Error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "post": {
+      "summary": "Updates the Genre entity matching the provided [genreId] using the provided fields.",
+      "operationId": "media.Genre.edit",
+      "tags": ["media"],
+      "parameters": [
+        {
+          "name": "genreId",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/common.DataField"
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/media.Genre"
+              }
+            }
+          }
+        },
+        "4XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.NotFound"
+              }
+            }
+          }
+        },
+        "5XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/admin/media/genre/{genreId}/remove": {
+    "get": {
+      "summary": "Removes the Genre entity matching the provided [genreId].",
+      "operationId": "media.Genre.remove",
+      "tags": ["media"],
+      "parameters": [
+        {
+          "name": "genreId",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/media.Genre"
+              }
+            }
+          }
+        },
+        "4XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.NotFound"
+              }
+            }
+          }
+        },
+        "5XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

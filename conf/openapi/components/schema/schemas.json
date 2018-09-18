@@ -1,0 +1,25 @@
+{
+  "#include:common.json": "*",
+  "#include:system.json": "*",
+
+  // Start model schemas
+  "#include:audit/audit.json": "*",
+  "#include:audit/auditRecord.json": "*",
+  "#include:commerce/customer.json": "*",
+  "#include:commerce/employee.json": "*",
+  "#include:commerce/invoice.json": "*",
+  "#include:commerce/invoiceLine.json": "*",
+  "#include:ddl/flywaySchemaHistory.json": "*",
+  "#include:media/album.json": "*",
+  "#include:media/artist.json": "*",
+  "#include:media/genre.json": "*",
+  "#include:media/mediaType.json": "*",
+  "#include:media/playlist.json": "*",
+  "#include:media/playlistTrack.json": "*",
+  "#include:media/track.json": "*",
+  "#include:note/note.json": "*",
+  "#include:sync/syncProgress.json": "*",
+  "#include:task/scheduledTaskRun.json": "*",
+  "#include:user/systemUser.json": "*"
+  // End model schemas
+}

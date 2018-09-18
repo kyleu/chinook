@@ -1,0 +1,11 @@
+# Generated File
+# Creates a new Album entity.
+mutation AlbumCreate {
+  album {
+    create(fields: [{k: "", v: ""}]) {
+      albumId
+      title
+      artistId
+    }
+  }
+}

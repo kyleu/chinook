@@ -1,0 +1,11 @@
+# Generated File
+# Updates a single Album entity using the provided fields.
+mutation AlbumUpdate {
+  album {
+    update(albumId: 0, fields: [{k: "", v: ""}]) {
+      albumId
+      title
+      artistId
+    }
+  }
+}

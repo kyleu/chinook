@@ -1,0 +1,10 @@
+# Generated File
+# Creates a new Genre entity.
+mutation GenreCreate {
+  genre {
+    create(fields: [{k: "", v: ""}]) {
+      genreId
+      name
+    }
+  }
+}

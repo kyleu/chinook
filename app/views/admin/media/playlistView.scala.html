@@ -1,0 +1,42 @@
+@* Generated File *@
+@(user: models.user.SystemUser, model: models.media.Playlist, notes: Seq[models.note.Note], debug: Boolean)(
+    implicit request: Request[AnyContent], session: Session, flash: Flash, traceData: util.tracing.TraceData
+)@traceData.logViewClass(getClass)@views.html.admin.layout.page(user, "explore", s"Playlist [${model.playlistId}]") {
+  <div class="collection with-header">
+    <div class="collection-header">
+      <div class="right"><a class="theme-text" href="@controllers.admin.media.routes.PlaylistController.editForm(model.playlistId)">Edit</a></div>
+      <div class="right"><a class="theme-text remove-link" onclick="return confirm('Are you sure you want to remove this Playlist?')" href="@controllers.admin.media.routes.PlaylistController.remove(model.playlistId)">Remove</a></div>
+      <h5>
+        <a class="theme-text" href="@controllers.admin.media.routes.PlaylistController.list()"><i class="fa @models.template.Icons.playlist"></i></a>
+        Playlist [@model.playlistId]
+      </h5>
+    </div>
+    <div class="collection-item">
+      <table class="highlight">
+        <tbody>
+          <tr>
+            <th>Playlist Id</th>
+            <td>@model.playlistId</td>
+          </tr>
+          <tr>
+            <th>Name</th>
+            <td>@model.name</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    @views.html.admin.note.notes(notes, "playlist", "Playlist", model.playlistId)
+  </div>
+
+  <ul id="model-relations" class="collapsible" data-collapsible="expandable">
+    <li id="relation-playlistTrack-playlistId" data-table="playlistTrack" data-field="playlistId" data-singular="Playlist Track" data-plural="Playlist Tracks" data-url="@controllers.admin.media.routes.PlaylistTrackController.byPlaylistId(model.playlistId, limit = Some(5))">
+      <div class="collapsible-header">
+        <i class="fa @models.template.Icons.playlistTrack"></i>
+        <span class="title">Playlist Tracks</span>&nbsp;by Playlist Id
+      </div>
+      <div class="collapsible-body"><span>Loading...</span></div>
+    </li>
+  </ul>
+  @views.html.components.includeScalaJs(debug)
+  <script>$(function() { new RelationService('@controllers.admin.media.routes.PlaylistController.relationCounts(model.playlistId)') });</script>
+}

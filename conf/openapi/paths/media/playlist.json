@@ -1,0 +1,247 @@
+// Generated File
+{
+  "/admin/media/playlist": {
+    "get": {
+      "summary": "Queries and filters the system Playlist entities.",
+      "operationId": "media.Playlist.list",
+      "tags": ["media"],
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/q"
+        },
+        {
+          "$ref": "#/components/parameters/orderBy"
+        },
+        {
+          "$ref": "#/components/parameters/orderAsc"
+        },
+        {
+          "$ref": "#/components/parameters/limit"
+        },
+        {
+          "$ref": "#/components/parameters/offset"
+        }
+      ],
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/media.PlaylistResult"
+              }
+            }
+          }
+        },
+        "4XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.NotFound"
+              }
+            }
+          }
+        },
+        "5XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.Error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "post": {
+      "summary": "Creates a new Playlist entity.",
+      "operationId": "media.Playlist.create",
+      "tags": ["media"],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/common.DataField"
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/media.Playlist"
+              }
+            }
+          }
+        },
+        "4XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.NotFound"
+              }
+            }
+          }
+        },
+        "5XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/admin/media/playlist/{playlistId}": {
+    "get": {
+      "summary": "View the Playlist entity matching the provided [playlistId].",
+      "operationId": "media.Playlist.view",
+      "tags": ["media"],
+      "parameters": [
+        {
+          "name": "playlistId",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/media.Playlist"
+              }
+            }
+          }
+        },
+        "4XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.NotFound"
+              }
+            }
+          }
+        },
+        "5XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.Error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "post": {
+      "summary": "Updates the Playlist entity matching the provided [playlistId] using the provided fields.",
+      "operationId": "media.Playlist.edit",
+      "tags": ["media"],
+      "parameters": [
+        {
+          "name": "playlistId",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/common.DataField"
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/media.Playlist"
+              }
+            }
+          }
+        },
+        "4XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.NotFound"
+              }
+            }
+          }
+        },
+        "5XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/admin/media/playlist/{playlistId}/remove": {
+    "get": {
+      "summary": "Removes the Playlist entity matching the provided [playlistId].",
+      "operationId": "media.Playlist.remove",
+      "tags": ["media"],
+      "parameters": [
+        {
+          "name": "playlistId",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/media.Playlist"
+              }
+            }
+          }
+        },
+        "4XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.NotFound"
+              }
+            }
+          }
+        },
+        "5XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

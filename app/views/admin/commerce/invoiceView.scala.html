@@ -1,0 +1,73 @@
+@* Generated File *@
+@(user: models.user.SystemUser, model: models.commerce.Invoice, notes: Seq[models.note.Note], debug: Boolean)(
+    implicit request: Request[AnyContent], session: Session, flash: Flash, traceData: util.tracing.TraceData
+)@traceData.logViewClass(getClass)@views.html.admin.layout.page(user, "explore", s"Invoice [${model.invoiceId}]") {
+  <div class="collection with-header">
+    <div class="collection-header">
+      <div class="right"><a class="theme-text" href="@controllers.admin.commerce.routes.InvoiceController.editForm(model.invoiceId)">Edit</a></div>
+      <div class="right"><a class="theme-text remove-link" onclick="return confirm('Are you sure you want to remove this Invoice?')" href="@controllers.admin.commerce.routes.InvoiceController.remove(model.invoiceId)">Remove</a></div>
+      <h5>
+        <a class="theme-text" href="@controllers.admin.commerce.routes.InvoiceController.list()"><i class="fa @models.template.Icons.invoice"></i></a>
+        Invoice [@model.invoiceId]
+      </h5>
+    </div>
+    <div class="collection-item">
+      <table class="highlight">
+        <tbody>
+          <tr>
+            <th>Invoice Id</th>
+            <td>@model.invoiceId</td>
+          </tr>
+          <tr>
+            <th>Customer Id</th>
+            <td>
+              @model.customerId
+              <a class="theme-text" href="@controllers.admin.commerce.routes.CustomerController.view(model.customerId)"><i class="fa @models.template.Icons.customer"></i></a>
+            </td>
+          </tr>
+          <tr>
+            <th>Invoice Date</th>
+            <td>@model.invoiceDate</td>
+          </tr>
+          <tr>
+            <th>Billing Address</th>
+            <td>@model.billingAddress</td>
+          </tr>
+          <tr>
+            <th>Billing City</th>
+            <td>@model.billingCity</td>
+          </tr>
+          <tr>
+            <th>Billing State</th>
+            <td>@model.billingState</td>
+          </tr>
+          <tr>
+            <th>Billing Country</th>
+            <td>@model.billingCountry</td>
+          </tr>
+          <tr>
+            <th>Billing Postal Code</th>
+            <td>@model.billingPostalCode</td>
+          </tr>
+          <tr>
+            <th>Total</th>
+            <td>@model.total</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    @views.html.admin.note.notes(notes, "invoice", "Invoice", model.invoiceId)
+  </div>
+
+  <ul id="model-relations" class="collapsible" data-collapsible="expandable">
+    <li id="relation-invoiceLine-invoiceId" data-table="invoiceLine" data-field="invoiceId" data-singular="Invoice Line" data-plural="Invoice Lines" data-url="@controllers.admin.commerce.routes.InvoiceLineController.byInvoiceId(model.invoiceId, limit = Some(5))">
+      <div class="collapsible-header">
+        <i class="fa @models.template.Icons.invoiceLine"></i>
+        <span class="title">Invoice Lines</span>&nbsp;by Invoice Id
+      </div>
+      <div class="collapsible-body"><span>Loading...</span></div>
+    </li>
+  </ul>
+  @views.html.components.includeScalaJs(debug)
+  <script>$(function() { new RelationService('@controllers.admin.commerce.routes.InvoiceController.relationCounts(model.invoiceId)') });</script>
+}

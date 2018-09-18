@@ -1,0 +1,17 @@
+# Generated File
+# Remove a single Invoice entity from the system.
+mutation InvoiceRemove {
+  invoice {
+    remove(invoiceId: 0) {
+      invoiceId
+      customerId
+      invoiceDate
+      billingAddress
+      billingCity
+      billingState
+      billingCountry
+      billingPostalCode
+      total
+    }
+  }
+}

@@ -1,0 +1,41 @@
+@* Generated File *@
+@(user: models.user.SystemUser, model: models.media.Track, title: String, cancel: Call, act: Call, isNew: Boolean = false, debug: Boolean = false)(
+    implicit request: Request[AnyContent], session: Session, flash: Flash, traceData: util.tracing.TraceData
+)@traceData.logViewClass(getClass)@views.html.admin.layout.page(user, "explore", title) {
+  <form id="form-edit-track" action="@act" method="post">
+    <div class="collection with-header">
+      <div class="collection-header">
+        <div class="right"><button type="submit" class="btn theme">@if(isNew) {Create} else {Save} Track</button></div>
+        <div class="right"><a href="@cancel" class="theme-text cancel-link">Cancel</a></div>
+        <h5><i class="fa @models.template.Icons.track"></i> @title</h5>
+      </div>
+      <div class="collection-item">
+        <table>
+          <tbody>
+            @views.html.components.form.textField(selected = isNew, key = "trackId", title = "Track Id", value = Some(model.trackId.toString), nullable = false, dataType = "long")
+            @views.html.components.form.textField(selected = isNew, key = "name", title = "Name", value = Some(model.name.toString), nullable = false)
+            @views.html.components.form.autocompleteField(
+              selected = isNew, key = "albumId", title = "Album Id", value = model.albumId.map(_.toString), nullable = true, dataType = "long",
+              call = controllers.admin.media.routes.AlbumController.autocomplete(), acType = ("album", "Album"), icon = models.template.Icons.album
+            )
+            @views.html.components.form.autocompleteField(
+              selected = isNew, key = "mediaTypeId", title = "Media Type Id", value = Some(model.mediaTypeId.toString), nullable = false, dataType = "long",
+              call = controllers.admin.media.routes.MediaTypeController.autocomplete(), acType = ("mediaType", "Media Type"), icon = models.template.Icons.mediaType
+            )
+            @views.html.components.form.autocompleteField(
+              selected = isNew, key = "genreId", title = "Genre Id", value = model.genreId.map(_.toString), nullable = true, dataType = "long",
+              call = controllers.admin.media.routes.GenreController.autocomplete(), acType = ("genre", "Genre"), icon = models.template.Icons.genre
+            )
+            @views.html.components.form.textField(selected = isNew, key = "composer", title = "Composer", value = model.composer.map(_.toString), nullable = true)
+            @views.html.components.form.textField(selected = isNew, key = "milliseconds", title = "Milliseconds", value = Some(model.milliseconds.toString), nullable = false, dataType = "long")
+            @views.html.components.form.textField(selected = isNew, key = "bytes", title = "Bytes", value = model.bytes.map(_.toString), nullable = true, dataType = "long")
+            @views.html.components.form.textField(selected = isNew, key = "unitPrice", title = "Unit Price", value = Some(model.unitPrice.toString), nullable = false, dataType = "decimal")
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </form>
+}
+@views.html.components.includeScalaJs(debug)
+@views.html.components.includeAutocomplete(debug)
+<script>$(function() { new FormService('form-edit-track'); })</script>

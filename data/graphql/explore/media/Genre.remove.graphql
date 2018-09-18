@@ -1,0 +1,10 @@
+# Generated File
+# Remove a single Genre entity from the system.
+mutation GenreRemove {
+  genre {
+    remove(genreId: 0) {
+      genreId
+      name
+    }
+  }
+}

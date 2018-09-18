@@ -1,0 +1,295 @@
+// Generated File
+{
+  "/admin/commerce/invoice": {
+    "get": {
+      "summary": "Queries and filters the system Invoice entities.",
+      "operationId": "commerce.Invoice.list",
+      "tags": ["commerce"],
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/q"
+        },
+        {
+          "$ref": "#/components/parameters/orderBy"
+        },
+        {
+          "$ref": "#/components/parameters/orderAsc"
+        },
+        {
+          "$ref": "#/components/parameters/limit"
+        },
+        {
+          "$ref": "#/components/parameters/offset"
+        }
+      ],
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/commerce.InvoiceResult"
+              }
+            }
+          }
+        },
+        "4XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.NotFound"
+              }
+            }
+          }
+        },
+        "5XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.Error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "post": {
+      "summary": "Creates a new Invoice entity.",
+      "operationId": "commerce.Invoice.create",
+      "tags": ["commerce"],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/common.DataField"
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/commerce.Invoice"
+              }
+            }
+          }
+        },
+        "4XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.NotFound"
+              }
+            }
+          }
+        },
+        "5XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/admin/commerce/invoice/{invoiceId}": {
+    "get": {
+      "summary": "View the Invoice entity matching the provided [invoiceId].",
+      "operationId": "commerce.Invoice.view",
+      "tags": ["commerce"],
+      "parameters": [
+        {
+          "name": "invoiceId",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/commerce.Invoice"
+              }
+            }
+          }
+        },
+        "4XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.NotFound"
+              }
+            }
+          }
+        },
+        "5XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.Error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "post": {
+      "summary": "Updates the Invoice entity matching the provided [invoiceId] using the provided fields.",
+      "operationId": "commerce.Invoice.edit",
+      "tags": ["commerce"],
+      "parameters": [
+        {
+          "name": "invoiceId",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/common.DataField"
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/commerce.Invoice"
+              }
+            }
+          }
+        },
+        "4XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.NotFound"
+              }
+            }
+          }
+        },
+        "5XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/admin/commerce/invoice/byCustomerId/{customerId}": {
+    "get": {
+      "summary": "Finds the Invoice entities associated to the provided [customerId].",
+      "operationId": "commerce.Invoice.byCustomerId",
+      "tags": ["commerce"],
+      "parameters": [
+        {
+          "name": "customerId",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/commerce.Invoice"
+                }
+              }
+            }
+          }
+        },
+        "4XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.NotFound"
+              }
+            }
+          }
+        },
+        "5XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/admin/commerce/invoice/{invoiceId}/remove": {
+    "get": {
+      "summary": "Removes the Invoice entity matching the provided [invoiceId].",
+      "operationId": "commerce.Invoice.remove",
+      "tags": ["commerce"],
+      "parameters": [
+        {
+          "name": "invoiceId",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/commerce.Invoice"
+              }
+            }
+          }
+        },
+        "4XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.NotFound"
+              }
+            }
+          }
+        },
+        "5XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,391 @@
+// Generated File
+{
+  "/admin/media/track": {
+    "get": {
+      "summary": "Queries and filters the system Track entities.",
+      "operationId": "media.Track.list",
+      "tags": ["media"],
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/q"
+        },
+        {
+          "$ref": "#/components/parameters/orderBy"
+        },
+        {
+          "$ref": "#/components/parameters/orderAsc"
+        },
+        {
+          "$ref": "#/components/parameters/limit"
+        },
+        {
+          "$ref": "#/components/parameters/offset"
+        }
+      ],
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/media.TrackResult"
+              }
+            }
+          }
+        },
+        "4XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.NotFound"
+              }
+            }
+          }
+        },
+        "5XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.Error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "post": {
+      "summary": "Creates a new Track entity.",
+      "operationId": "media.Track.create",
+      "tags": ["media"],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/common.DataField"
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/media.Track"
+              }
+            }
+          }
+        },
+        "4XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.NotFound"
+              }
+            }
+          }
+        },
+        "5XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/admin/media/track/{trackId}": {
+    "get": {
+      "summary": "View the Track entity matching the provided [trackId].",
+      "operationId": "media.Track.view",
+      "tags": ["media"],
+      "parameters": [
+        {
+          "name": "trackId",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/media.Track"
+              }
+            }
+          }
+        },
+        "4XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.NotFound"
+              }
+            }
+          }
+        },
+        "5XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.Error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "post": {
+      "summary": "Updates the Track entity matching the provided [trackId] using the provided fields.",
+      "operationId": "media.Track.edit",
+      "tags": ["media"],
+      "parameters": [
+        {
+          "name": "trackId",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/common.DataField"
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/media.Track"
+              }
+            }
+          }
+        },
+        "4XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.NotFound"
+              }
+            }
+          }
+        },
+        "5XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/admin/media/track/byAlbumId/{albumId}": {
+    "get": {
+      "summary": "Finds the Track entities associated to the provided [albumId].",
+      "operationId": "media.Track.byAlbumId",
+      "tags": ["media"],
+      "parameters": [
+        {
+          "name": "albumId",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/media.Track"
+                }
+              }
+            }
+          }
+        },
+        "4XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.NotFound"
+              }
+            }
+          }
+        },
+        "5XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/admin/media/track/byMediaTypeId/{mediaTypeId}": {
+    "get": {
+      "summary": "Finds the Track entities associated to the provided [mediaTypeId].",
+      "operationId": "media.Track.byMediaTypeId",
+      "tags": ["media"],
+      "parameters": [
+        {
+          "name": "mediaTypeId",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/media.Track"
+                }
+              }
+            }
+          }
+        },
+        "4XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.NotFound"
+              }
+            }
+          }
+        },
+        "5XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/admin/media/track/byGenreId/{genreId}": {
+    "get": {
+      "summary": "Finds the Track entities associated to the provided [genreId].",
+      "operationId": "media.Track.byGenreId",
+      "tags": ["media"],
+      "parameters": [
+        {
+          "name": "genreId",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/media.Track"
+                }
+              }
+            }
+          }
+        },
+        "4XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.NotFound"
+              }
+            }
+          }
+        },
+        "5XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/admin/media/track/{trackId}/remove": {
+    "get": {
+      "summary": "Removes the Track entity matching the provided [trackId].",
+      "operationId": "media.Track.remove",
+      "tags": ["media"],
+      "parameters": [
+        {
+          "name": "trackId",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/media.Track"
+              }
+            }
+          }
+        },
+        "4XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.NotFound"
+              }
+            }
+          }
+        },
+        "5XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

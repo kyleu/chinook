@@ -1,0 +1,48 @@
+@* Generated File *@
+@(user: models.user.SystemUser, model: models.commerce.InvoiceLine, notes: Seq[models.note.Note], debug: Boolean)(
+    implicit request: Request[AnyContent], session: Session, flash: Flash, traceData: util.tracing.TraceData
+)@traceData.logViewClass(getClass)@views.html.admin.layout.page(user, "explore", s"Invoice Line [${model.invoiceLineId}]") {
+  <div class="collection with-header">
+    <div class="collection-header">
+      <div class="right"><a class="theme-text" href="@controllers.admin.commerce.routes.InvoiceLineController.editForm(model.invoiceLineId)">Edit</a></div>
+      <div class="right"><a class="theme-text remove-link" onclick="return confirm('Are you sure you want to remove this Invoice Line?')" href="@controllers.admin.commerce.routes.InvoiceLineController.remove(model.invoiceLineId)">Remove</a></div>
+      <h5>
+        <a class="theme-text" href="@controllers.admin.commerce.routes.InvoiceLineController.list()"><i class="fa @models.template.Icons.invoiceLine"></i></a>
+        Invoice Line [@model.invoiceLineId]
+      </h5>
+    </div>
+    <div class="collection-item">
+      <table class="highlight">
+        <tbody>
+          <tr>
+            <th>Invoice Line Id</th>
+            <td>@model.invoiceLineId</td>
+          </tr>
+          <tr>
+            <th>Invoice Id</th>
+            <td>
+              @model.invoiceId
+              <a class="theme-text" href="@controllers.admin.commerce.routes.InvoiceController.view(model.invoiceId)"><i class="fa @models.template.Icons.invoice"></i></a>
+            </td>
+          </tr>
+          <tr>
+            <th>Track Id</th>
+            <td>
+              @model.trackId
+              <a class="theme-text" href="@controllers.admin.media.routes.TrackController.view(model.trackId)"><i class="fa @models.template.Icons.track"></i></a>
+            </td>
+          </tr>
+          <tr>
+            <th>Unit Price</th>
+            <td>@model.unitPrice</td>
+          </tr>
+          <tr>
+            <th>Quantity</th>
+            <td>@model.quantity</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    @views.html.admin.note.notes(notes, "invoiceLine", "Invoice Line", model.invoiceLineId)
+  </div>
+}

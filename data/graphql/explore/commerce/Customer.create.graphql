@@ -1,0 +1,21 @@
+# Generated File
+# Creates a new Customer entity.
+mutation CustomerCreate {
+  customer {
+    create(fields: [{k: "", v: ""}]) {
+      customerId
+      firstName
+      lastName
+      company
+      address
+      city
+      state
+      country
+      postalCode
+      phone
+      fax
+      email
+      supportRepId
+    }
+  }
+}

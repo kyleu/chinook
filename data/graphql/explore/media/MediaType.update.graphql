@@ -1,0 +1,10 @@
+# Generated File
+# Updates a single MediaType entity using the provided fields.
+mutation MediaTypeUpdate {
+  mediaType {
+    update(mediaTypeId: 0, fields: [{k: "", v: ""}]) {
+      mediaTypeId
+      name
+    }
+  }
+}

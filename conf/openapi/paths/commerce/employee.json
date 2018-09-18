@@ -1,0 +1,295 @@
+// Generated File
+{
+  "/admin/commerce/employee": {
+    "get": {
+      "summary": "Queries and filters the system Employee entities.",
+      "operationId": "commerce.Employee.list",
+      "tags": ["commerce"],
+      "parameters": [
+        {
+          "$ref": "#/components/parameters/q"
+        },
+        {
+          "$ref": "#/components/parameters/orderBy"
+        },
+        {
+          "$ref": "#/components/parameters/orderAsc"
+        },
+        {
+          "$ref": "#/components/parameters/limit"
+        },
+        {
+          "$ref": "#/components/parameters/offset"
+        }
+      ],
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/commerce.EmployeeResult"
+              }
+            }
+          }
+        },
+        "4XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.NotFound"
+              }
+            }
+          }
+        },
+        "5XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.Error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "post": {
+      "summary": "Creates a new Employee entity.",
+      "operationId": "commerce.Employee.create",
+      "tags": ["commerce"],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/common.DataField"
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/commerce.Employee"
+              }
+            }
+          }
+        },
+        "4XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.NotFound"
+              }
+            }
+          }
+        },
+        "5XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/admin/commerce/employee/{employeeId}": {
+    "get": {
+      "summary": "View the Employee entity matching the provided [employeeId].",
+      "operationId": "commerce.Employee.view",
+      "tags": ["commerce"],
+      "parameters": [
+        {
+          "name": "employeeId",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/commerce.Employee"
+              }
+            }
+          }
+        },
+        "4XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.NotFound"
+              }
+            }
+          }
+        },
+        "5XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.Error"
+              }
+            }
+          }
+        }
+      }
+    },
+    "post": {
+      "summary": "Updates the Employee entity matching the provided [employeeId] using the provided fields.",
+      "operationId": "commerce.Employee.edit",
+      "tags": ["commerce"],
+      "parameters": [
+        {
+          "name": "employeeId",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "requestBody": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/common.DataField"
+              }
+            }
+          }
+        }
+      },
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/commerce.Employee"
+              }
+            }
+          }
+        },
+        "4XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.NotFound"
+              }
+            }
+          }
+        },
+        "5XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/admin/commerce/employee/byReportsTo/{reportsTo}": {
+    "get": {
+      "summary": "Finds the Employee entities associated to the provided [reportsTo].",
+      "operationId": "commerce.Employee.byReportsTo",
+      "tags": ["commerce"],
+      "parameters": [
+        {
+          "name": "reportsTo",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/commerce.Employee"
+                }
+              }
+            }
+          }
+        },
+        "4XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.NotFound"
+              }
+            }
+          }
+        },
+        "5XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "/admin/commerce/employee/{employeeId}/remove": {
+    "get": {
+      "summary": "Removes the Employee entity matching the provided [employeeId].",
+      "operationId": "commerce.Employee.remove",
+      "tags": ["commerce"],
+      "parameters": [
+        {
+          "name": "employeeId",
+          "in": "path",
+          "schema": {
+            "type": "integer"
+          }
+        }
+      ],
+      "responses": {
+        "200": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/commerce.Employee"
+              }
+            }
+          }
+        },
+        "4XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.NotFound"
+              }
+            }
+          }
+        },
+        "5XX": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/common.Error"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

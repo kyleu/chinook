@@ -1,0 +1,21 @@
+# Generated File
+# Remove a single Customer entity from the system.
+mutation CustomerRemove {
+  customer {
+    remove(customerId: 0) {
+      customerId
+      firstName
+      lastName
+      company
+      address
+      city
+      state
+      country
+      postalCode
+      phone
+      fax
+      email
+      supportRepId
+    }
+  }
+}

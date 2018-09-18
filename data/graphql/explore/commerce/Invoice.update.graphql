@@ -1,0 +1,17 @@
+# Generated File
+# Updates a single Invoice entity using the provided fields.
+mutation InvoiceUpdate {
+  invoice {
+    update(invoiceId: 0, fields: [{k: "", v: ""}]) {
+      invoiceId
+      customerId
+      invoiceDate
+      billingAddress
+      billingCity
+      billingState
+      billingCountry
+      billingPostalCode
+      total
+    }
+  }
+}

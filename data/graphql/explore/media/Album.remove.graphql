@@ -1,0 +1,11 @@
+# Generated File
+# Remove a single Album entity from the system.
+mutation AlbumRemove {
+  album {
+    remove(albumId: 0) {
+      albumId
+      title
+      artistId
+    }
+  }
+}

@@ -1,0 +1,17 @@
+# Generated File
+# Updates a single Track entity using the provided fields.
+mutation TrackUpdate {
+  track {
+    update(trackId: 0, fields: [{k: "", v: ""}]) {
+      trackId
+      name
+      albumId
+      mediaTypeId
+      genreId
+      composer
+      milliseconds
+      bytes
+      unitPrice
+    }
+  }
+}

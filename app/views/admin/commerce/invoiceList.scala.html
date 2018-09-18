@@ -1,0 +1,30 @@
+@* Generated File *@
+@(user: models.user.SystemUser, totalCount: Option[Int], modelSeq: Seq[models.commerce.Invoice], q: Option[String], orderBy: Option[String], orderAsc: Boolean, limit: Int, offset: Int)(
+    implicit request: Request[AnyContent], session: Session, flash: Flash, traceData: util.tracing.TraceData
+)@traceData.logViewClass(getClass)
+@views.html.admin.explore.list(
+  user = user,
+  model = "Invoice",
+  modelPlural = "Invoices",
+  icon = models.template.Icons.invoice,
+  cols = Seq(
+    "invoiceId" -> "Invoice Id",
+    "customerId" -> "Customer Id",
+    "invoiceDate" -> "Invoice Date",
+    "total" -> "Total"
+  ),
+  totalCount = totalCount,
+  rows = modelSeq.map(model => views.html.admin.commerce.invoiceDataRow(model)),
+  orderBy = orderBy,
+  orderAsc = orderAsc,
+  calls = models.result.web.ListCalls(
+    newCall = Some(controllers.admin.commerce.routes.InvoiceController.createForm()),
+    orderBy = Some(controllers.admin.commerce.routes.InvoiceController.list(q, _, _, Some(limit), Some(0))),
+    search = Some(controllers.admin.commerce.routes.InvoiceController.list(None, orderBy, orderAsc, Some(limit), None)),
+    next = controllers.admin.commerce.routes.InvoiceController.list(q, orderBy, orderAsc, Some(limit), Some(offset + limit)),
+    prev = controllers.admin.commerce.routes.InvoiceController.list(q, orderBy, orderAsc, Some(limit), Some(offset - limit))
+  ),
+  limit = limit,
+  offset = offset,
+  q = q
+)

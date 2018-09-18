@@ -1,0 +1,31 @@
+@* Generated File *@
+@(user: models.user.SystemUser, totalCount: Option[Int], modelSeq: Seq[models.media.Track], q: Option[String], orderBy: Option[String], orderAsc: Boolean, limit: Int, offset: Int)(
+    implicit request: Request[AnyContent], session: Session, flash: Flash, traceData: util.tracing.TraceData
+)@traceData.logViewClass(getClass)
+@views.html.admin.explore.list(
+  user = user,
+  model = "Track",
+  modelPlural = "Tracks",
+  icon = models.template.Icons.track,
+  cols = Seq(
+    "trackId" -> "Track Id",
+    "name" -> "Name",
+    "albumId" -> "Album Id",
+    "mediaTypeId" -> "Media Type Id",
+    "genreId" -> "Genre Id"
+  ),
+  totalCount = totalCount,
+  rows = modelSeq.map(model => views.html.admin.media.trackDataRow(model)),
+  orderBy = orderBy,
+  orderAsc = orderAsc,
+  calls = models.result.web.ListCalls(
+    newCall = Some(controllers.admin.media.routes.TrackController.createForm()),
+    orderBy = Some(controllers.admin.media.routes.TrackController.list(q, _, _, Some(limit), Some(0))),
+    search = Some(controllers.admin.media.routes.TrackController.list(None, orderBy, orderAsc, Some(limit), None)),
+    next = controllers.admin.media.routes.TrackController.list(q, orderBy, orderAsc, Some(limit), Some(offset + limit)),
+    prev = controllers.admin.media.routes.TrackController.list(q, orderBy, orderAsc, Some(limit), Some(offset - limit))
+  ),
+  limit = limit,
+  offset = offset,
+  q = q
+)

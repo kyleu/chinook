@@ -1,0 +1,10 @@
+# Generated File
+# Updates a single Playlist entity using the provided fields.
+mutation PlaylistUpdate {
+  playlist {
+    update(playlistId: 0, fields: [{k: "", v: ""}]) {
+      playlistId
+      name
+    }
+  }
+}

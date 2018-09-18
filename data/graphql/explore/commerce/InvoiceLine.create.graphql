@@ -1,0 +1,13 @@
+# Generated File
+# Creates a new InvoiceLine entity.
+mutation InvoiceLineCreate {
+  invoiceLine {
+    create(fields: [{k: "", v: ""}]) {
+      invoiceLineId
+      invoiceId
+      trackId
+      unitPrice
+      quantity
+    }
+  }
+}

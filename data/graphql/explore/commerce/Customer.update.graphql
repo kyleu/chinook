@@ -1,0 +1,21 @@
+# Generated File
+# Updates a single Customer entity using the provided fields.
+mutation CustomerUpdate {
+  customer {
+    update(customerId: 0, fields: [{k: "", v: ""}]) {
+      customerId
+      firstName
+      lastName
+      company
+      address
+      city
+      state
+      country
+      postalCode
+      phone
+      fax
+      email
+      supportRepId
+    }
+  }
+}

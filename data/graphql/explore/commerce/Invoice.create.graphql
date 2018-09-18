@@ -1,0 +1,17 @@
+# Generated File
+# Creates a new Invoice entity.
+mutation InvoiceCreate {
+  invoice {
+    create(fields: [{k: "", v: ""}]) {
+      invoiceId
+      customerId
+      invoiceDate
+      billingAddress
+      billingCity
+      billingState
+      billingCountry
+      billingPostalCode
+      total
+    }
+  }
+}

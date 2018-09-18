@@ -1,0 +1,83 @@
+# Generated File
+# Album Routes
+GET         /album                                                    controllers.admin.media.AlbumController.list(q: Option[String] ?= None, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None, offset: Option[Int] ?= None, t: Option[String] ?= None)
+GET         /album/autocomplete                                       controllers.admin.media.AlbumController.autocomplete(q: Option[String] ?= None, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None)
+GET         /album/form                                               controllers.admin.media.AlbumController.createForm
+POST        /album                                                    controllers.admin.media.AlbumController.create
+GET         /album/byArtistId/:artistId                               controllers.admin.media.AlbumController.byArtistId(artistId: Long, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None, offset: Option[Int] ?= None, t: Option[String] ?= None)
+GET         /album/:albumId                                           controllers.admin.media.AlbumController.view(albumId: Long, t: Option[String] ?= None)
+GET         /album/:albumId/counts                                    controllers.admin.media.AlbumController.relationCounts(albumId: Long)
+GET         /album/:albumId/form                                      controllers.admin.media.AlbumController.editForm(albumId: Long)
+POST        /album/:albumId                                           controllers.admin.media.AlbumController.edit(albumId: Long)
+GET         /album/:albumId/remove                                    controllers.admin.media.AlbumController.remove(albumId: Long)
+
+# Artist Routes
+GET         /artist                                                   controllers.admin.media.ArtistController.list(q: Option[String] ?= None, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None, offset: Option[Int] ?= None, t: Option[String] ?= None)
+GET         /artist/autocomplete                                      controllers.admin.media.ArtistController.autocomplete(q: Option[String] ?= None, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None)
+GET         /artist/form                                              controllers.admin.media.ArtistController.createForm
+POST        /artist                                                   controllers.admin.media.ArtistController.create
+GET         /artist/:artistId                                         controllers.admin.media.ArtistController.view(artistId: Long, t: Option[String] ?= None)
+GET         /artist/:artistId/counts                                  controllers.admin.media.ArtistController.relationCounts(artistId: Long)
+GET         /artist/:artistId/form                                    controllers.admin.media.ArtistController.editForm(artistId: Long)
+POST        /artist/:artistId                                         controllers.admin.media.ArtistController.edit(artistId: Long)
+GET         /artist/:artistId/remove                                  controllers.admin.media.ArtistController.remove(artistId: Long)
+
+# Genre Routes
+GET         /genre                                                    controllers.admin.media.GenreController.list(q: Option[String] ?= None, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None, offset: Option[Int] ?= None, t: Option[String] ?= None)
+GET         /genre/autocomplete                                       controllers.admin.media.GenreController.autocomplete(q: Option[String] ?= None, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None)
+GET         /genre/form                                               controllers.admin.media.GenreController.createForm
+POST        /genre                                                    controllers.admin.media.GenreController.create
+GET         /genre/:genreId                                           controllers.admin.media.GenreController.view(genreId: Long, t: Option[String] ?= None)
+GET         /genre/:genreId/counts                                    controllers.admin.media.GenreController.relationCounts(genreId: Long)
+GET         /genre/:genreId/form                                      controllers.admin.media.GenreController.editForm(genreId: Long)
+POST        /genre/:genreId                                           controllers.admin.media.GenreController.edit(genreId: Long)
+GET         /genre/:genreId/remove                                    controllers.admin.media.GenreController.remove(genreId: Long)
+
+# Media Type Routes
+GET         /mediaType                                                controllers.admin.media.MediaTypeController.list(q: Option[String] ?= None, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None, offset: Option[Int] ?= None, t: Option[String] ?= None)
+GET         /mediaType/autocomplete                                   controllers.admin.media.MediaTypeController.autocomplete(q: Option[String] ?= None, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None)
+GET         /mediaType/form                                           controllers.admin.media.MediaTypeController.createForm
+POST        /mediaType                                                controllers.admin.media.MediaTypeController.create
+GET         /mediaType/:mediaTypeId                                   controllers.admin.media.MediaTypeController.view(mediaTypeId: Long, t: Option[String] ?= None)
+GET         /mediaType/:mediaTypeId/counts                            controllers.admin.media.MediaTypeController.relationCounts(mediaTypeId: Long)
+GET         /mediaType/:mediaTypeId/form                              controllers.admin.media.MediaTypeController.editForm(mediaTypeId: Long)
+POST        /mediaType/:mediaTypeId                                   controllers.admin.media.MediaTypeController.edit(mediaTypeId: Long)
+GET         /mediaType/:mediaTypeId/remove                            controllers.admin.media.MediaTypeController.remove(mediaTypeId: Long)
+
+# Playlist Routes
+GET         /playlist                                                 controllers.admin.media.PlaylistController.list(q: Option[String] ?= None, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None, offset: Option[Int] ?= None, t: Option[String] ?= None)
+GET         /playlist/autocomplete                                    controllers.admin.media.PlaylistController.autocomplete(q: Option[String] ?= None, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None)
+GET         /playlist/form                                            controllers.admin.media.PlaylistController.createForm
+POST        /playlist                                                 controllers.admin.media.PlaylistController.create
+GET         /playlist/:playlistId                                     controllers.admin.media.PlaylistController.view(playlistId: Long, t: Option[String] ?= None)
+GET         /playlist/:playlistId/counts                              controllers.admin.media.PlaylistController.relationCounts(playlistId: Long)
+GET         /playlist/:playlistId/form                                controllers.admin.media.PlaylistController.editForm(playlistId: Long)
+POST        /playlist/:playlistId                                     controllers.admin.media.PlaylistController.edit(playlistId: Long)
+GET         /playlist/:playlistId/remove                              controllers.admin.media.PlaylistController.remove(playlistId: Long)
+
+# Playlist Track Routes
+GET         /playlistTrack                                            controllers.admin.media.PlaylistTrackController.list(q: Option[String] ?= None, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None, offset: Option[Int] ?= None, t: Option[String] ?= None)
+GET         /playlistTrack/autocomplete                               controllers.admin.media.PlaylistTrackController.autocomplete(q: Option[String] ?= None, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None)
+GET         /playlistTrack/form                                       controllers.admin.media.PlaylistTrackController.createForm
+POST        /playlistTrack                                            controllers.admin.media.PlaylistTrackController.create
+GET         /playlistTrack/byTrackId/:trackId                         controllers.admin.media.PlaylistTrackController.byTrackId(trackId: Long, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None, offset: Option[Int] ?= None, t: Option[String] ?= None)
+GET         /playlistTrack/byPlaylistId/:playlistId                   controllers.admin.media.PlaylistTrackController.byPlaylistId(playlistId: Long, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None, offset: Option[Int] ?= None, t: Option[String] ?= None)
+GET         /playlistTrack/:playlistId/:trackId                       controllers.admin.media.PlaylistTrackController.view(playlistId: Long, trackId: Long, t: Option[String] ?= None)
+GET         /playlistTrack/:playlistId/:trackId/form                  controllers.admin.media.PlaylistTrackController.editForm(playlistId: Long, trackId: Long)
+POST        /playlistTrack/:playlistId/:trackId                       controllers.admin.media.PlaylistTrackController.edit(playlistId: Long, trackId: Long)
+GET         /playlistTrack/:playlistId/:trackId/remove                controllers.admin.media.PlaylistTrackController.remove(playlistId: Long, trackId: Long)
+
+# Track Routes
+GET         /track                                                    controllers.admin.media.TrackController.list(q: Option[String] ?= None, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None, offset: Option[Int] ?= None, t: Option[String] ?= None)
+GET         /track/autocomplete                                       controllers.admin.media.TrackController.autocomplete(q: Option[String] ?= None, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None)
+GET         /track/form                                               controllers.admin.media.TrackController.createForm
+POST        /track                                                    controllers.admin.media.TrackController.create
+GET         /track/byAlbumId/:albumId                                 controllers.admin.media.TrackController.byAlbumId(albumId: Long, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None, offset: Option[Int] ?= None, t: Option[String] ?= None)
+GET         /track/byMediaTypeId/:mediaTypeId                         controllers.admin.media.TrackController.byMediaTypeId(mediaTypeId: Long, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None, offset: Option[Int] ?= None, t: Option[String] ?= None)
+GET         /track/byGenreId/:genreId                                 controllers.admin.media.TrackController.byGenreId(genreId: Long, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None, offset: Option[Int] ?= None, t: Option[String] ?= None)
+GET         /track/:trackId                                           controllers.admin.media.TrackController.view(trackId: Long, t: Option[String] ?= None)
+GET         /track/:trackId/counts                                    controllers.admin.media.TrackController.relationCounts(trackId: Long)
+GET         /track/:trackId/form                                      controllers.admin.media.TrackController.editForm(trackId: Long)
+POST        /track/:trackId                                           controllers.admin.media.TrackController.edit(trackId: Long)
+GET         /track/:trackId/remove                                    controllers.admin.media.TrackController.remove(trackId: Long)
+

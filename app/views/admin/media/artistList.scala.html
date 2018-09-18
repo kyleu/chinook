@@ -1,0 +1,28 @@
+@* Generated File *@
+@(user: models.user.SystemUser, totalCount: Option[Int], modelSeq: Seq[models.media.Artist], q: Option[String], orderBy: Option[String], orderAsc: Boolean, limit: Int, offset: Int)(
+    implicit request: Request[AnyContent], session: Session, flash: Flash, traceData: util.tracing.TraceData
+)@traceData.logViewClass(getClass)
+@views.html.admin.explore.list(
+  user = user,
+  model = "Artist",
+  modelPlural = "Artists",
+  icon = models.template.Icons.artist,
+  cols = Seq(
+    "artistId" -> "Artist Id",
+    "name" -> "Name"
+  ),
+  totalCount = totalCount,
+  rows = modelSeq.map(model => views.html.admin.media.artistDataRow(model)),
+  orderBy = orderBy,
+  orderAsc = orderAsc,
+  calls = models.result.web.ListCalls(
+    newCall = Some(controllers.admin.media.routes.ArtistController.createForm()),
+    orderBy = Some(controllers.admin.media.routes.ArtistController.list(q, _, _, Some(limit), Some(0))),
+    search = Some(controllers.admin.media.routes.ArtistController.list(None, orderBy, orderAsc, Some(limit), None)),
+    next = controllers.admin.media.routes.ArtistController.list(q, orderBy, orderAsc, Some(limit), Some(offset + limit)),
+    prev = controllers.admin.media.routes.ArtistController.list(q, orderBy, orderAsc, Some(limit), Some(offset - limit))
+  ),
+  limit = limit,
+  offset = offset,
+  q = q
+)

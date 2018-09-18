@@ -1,0 +1,49 @@
+# Generated File
+# Customer Routes
+GET         /customer                                                 controllers.admin.commerce.CustomerController.list(q: Option[String] ?= None, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None, offset: Option[Int] ?= None, t: Option[String] ?= None)
+GET         /customer/autocomplete                                    controllers.admin.commerce.CustomerController.autocomplete(q: Option[String] ?= None, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None)
+GET         /customer/form                                            controllers.admin.commerce.CustomerController.createForm
+POST        /customer                                                 controllers.admin.commerce.CustomerController.create
+GET         /customer/bySupportRepId/:supportRepId                    controllers.admin.commerce.CustomerController.bySupportRepId(supportRepId: Long, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None, offset: Option[Int] ?= None, t: Option[String] ?= None)
+GET         /customer/:customerId                                     controllers.admin.commerce.CustomerController.view(customerId: Long, t: Option[String] ?= None)
+GET         /customer/:customerId/counts                              controllers.admin.commerce.CustomerController.relationCounts(customerId: Long)
+GET         /customer/:customerId/form                                controllers.admin.commerce.CustomerController.editForm(customerId: Long)
+POST        /customer/:customerId                                     controllers.admin.commerce.CustomerController.edit(customerId: Long)
+GET         /customer/:customerId/remove                              controllers.admin.commerce.CustomerController.remove(customerId: Long)
+
+# Employee Routes
+GET         /employee                                                 controllers.admin.commerce.EmployeeController.list(q: Option[String] ?= None, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None, offset: Option[Int] ?= None, t: Option[String] ?= None)
+GET         /employee/autocomplete                                    controllers.admin.commerce.EmployeeController.autocomplete(q: Option[String] ?= None, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None)
+GET         /employee/form                                            controllers.admin.commerce.EmployeeController.createForm
+POST        /employee                                                 controllers.admin.commerce.EmployeeController.create
+GET         /employee/byReportsTo/:reportsTo                          controllers.admin.commerce.EmployeeController.byReportsTo(reportsTo: Long, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None, offset: Option[Int] ?= None, t: Option[String] ?= None)
+GET         /employee/:employeeId                                     controllers.admin.commerce.EmployeeController.view(employeeId: Long, t: Option[String] ?= None)
+GET         /employee/:employeeId/counts                              controllers.admin.commerce.EmployeeController.relationCounts(employeeId: Long)
+GET         /employee/:employeeId/form                                controllers.admin.commerce.EmployeeController.editForm(employeeId: Long)
+POST        /employee/:employeeId                                     controllers.admin.commerce.EmployeeController.edit(employeeId: Long)
+GET         /employee/:employeeId/remove                              controllers.admin.commerce.EmployeeController.remove(employeeId: Long)
+
+# Invoice Routes
+GET         /invoice                                                  controllers.admin.commerce.InvoiceController.list(q: Option[String] ?= None, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None, offset: Option[Int] ?= None, t: Option[String] ?= None)
+GET         /invoice/autocomplete                                     controllers.admin.commerce.InvoiceController.autocomplete(q: Option[String] ?= None, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None)
+GET         /invoice/form                                             controllers.admin.commerce.InvoiceController.createForm
+POST        /invoice                                                  controllers.admin.commerce.InvoiceController.create
+GET         /invoice/byCustomerId/:customerId                         controllers.admin.commerce.InvoiceController.byCustomerId(customerId: Long, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None, offset: Option[Int] ?= None, t: Option[String] ?= None)
+GET         /invoice/:invoiceId                                       controllers.admin.commerce.InvoiceController.view(invoiceId: Long, t: Option[String] ?= None)
+GET         /invoice/:invoiceId/counts                                controllers.admin.commerce.InvoiceController.relationCounts(invoiceId: Long)
+GET         /invoice/:invoiceId/form                                  controllers.admin.commerce.InvoiceController.editForm(invoiceId: Long)
+POST        /invoice/:invoiceId                                       controllers.admin.commerce.InvoiceController.edit(invoiceId: Long)
+GET         /invoice/:invoiceId/remove                                controllers.admin.commerce.InvoiceController.remove(invoiceId: Long)
+
+# Invoice Line Routes
+GET         /invoiceLine                                              controllers.admin.commerce.InvoiceLineController.list(q: Option[String] ?= None, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None, offset: Option[Int] ?= None, t: Option[String] ?= None)
+GET         /invoiceLine/autocomplete                                 controllers.admin.commerce.InvoiceLineController.autocomplete(q: Option[String] ?= None, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None)
+GET         /invoiceLine/form                                         controllers.admin.commerce.InvoiceLineController.createForm
+POST        /invoiceLine                                              controllers.admin.commerce.InvoiceLineController.create
+GET         /invoiceLine/byInvoiceId/:invoiceId                       controllers.admin.commerce.InvoiceLineController.byInvoiceId(invoiceId: Long, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None, offset: Option[Int] ?= None, t: Option[String] ?= None)
+GET         /invoiceLine/byTrackId/:trackId                           controllers.admin.commerce.InvoiceLineController.byTrackId(trackId: Long, orderBy: Option[String] ?= None, orderAsc: Boolean ?= true, limit: Option[Int] ?= None, offset: Option[Int] ?= None, t: Option[String] ?= None)
+GET         /invoiceLine/:invoiceLineId                               controllers.admin.commerce.InvoiceLineController.view(invoiceLineId: Long, t: Option[String] ?= None)
+GET         /invoiceLine/:invoiceLineId/form                          controllers.admin.commerce.InvoiceLineController.editForm(invoiceLineId: Long)
+POST        /invoiceLine/:invoiceLineId                               controllers.admin.commerce.InvoiceLineController.edit(invoiceLineId: Long)
+GET         /invoiceLine/:invoiceLineId/remove                        controllers.admin.commerce.InvoiceLineController.remove(invoiceLineId: Long)
+

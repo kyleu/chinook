@@ -1,0 +1,41 @@
+@* Generated File *@
+@(user: models.user.SystemUser, model: models.commerce.Employee, title: String, cancel: Call, act: Call, isNew: Boolean = false, debug: Boolean = false)(
+    implicit request: Request[AnyContent], session: Session, flash: Flash, traceData: util.tracing.TraceData
+)@traceData.logViewClass(getClass)@views.html.admin.layout.page(user, "explore", title) {
+  <form id="form-edit-employee" action="@act" method="post">
+    <div class="collection with-header">
+      <div class="collection-header">
+        <div class="right"><button type="submit" class="btn theme">@if(isNew) {Create} else {Save} Employee</button></div>
+        <div class="right"><a href="@cancel" class="theme-text cancel-link">Cancel</a></div>
+        <h5><i class="fa @models.template.Icons.employee"></i> @title</h5>
+      </div>
+      <div class="collection-item">
+        <table>
+          <tbody>
+            @views.html.components.form.textField(selected = isNew, key = "employeeId", title = "Employee Id", value = Some(model.employeeId.toString), nullable = false, dataType = "long")
+            @views.html.components.form.textField(selected = isNew, key = "lastName", title = "Last Name", value = Some(model.lastName.toString), nullable = false)
+            @views.html.components.form.textField(selected = isNew, key = "firstName", title = "First Name", value = Some(model.firstName.toString), nullable = false)
+            @views.html.components.form.textField(selected = isNew, key = "title", title = "Title", value = model.title.map(_.toString), nullable = true)
+            @views.html.components.form.autocompleteField(
+              selected = isNew, key = "reportsTo", title = "Reports To", value = model.reportsTo.map(_.toString), nullable = true, dataType = "long",
+              call = controllers.admin.commerce.routes.EmployeeController.autocomplete(), acType = ("employee", "Employee"), icon = models.template.Icons.employee
+            )
+            @views.html.components.form.localDateTimeField(selected = isNew, key = "birthDate", title = "Birth Date", value = model.birthDate, nullable = true)
+            @views.html.components.form.localDateTimeField(selected = isNew, key = "hireDate", title = "Hire Date", value = model.hireDate, nullable = true)
+            @views.html.components.form.textField(selected = isNew, key = "address", title = "Address", value = model.address.map(_.toString), nullable = true)
+            @views.html.components.form.textField(selected = isNew, key = "city", title = "City", value = model.city.map(_.toString), nullable = true)
+            @views.html.components.form.textField(selected = isNew, key = "state", title = "State", value = model.state.map(_.toString), nullable = true)
+            @views.html.components.form.textField(selected = isNew, key = "country", title = "Country", value = model.country.map(_.toString), nullable = true)
+            @views.html.components.form.textField(selected = isNew, key = "postalCode", title = "Postal Code", value = model.postalCode.map(_.toString), nullable = true)
+            @views.html.components.form.textField(selected = isNew, key = "phone", title = "Phone", value = model.phone.map(_.toString), nullable = true)
+            @views.html.components.form.textField(selected = isNew, key = "fax", title = "Fax", value = model.fax.map(_.toString), nullable = true)
+            @views.html.components.form.textField(selected = isNew, key = "email", title = "Email", value = model.email.map(_.toString), nullable = true)
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </form>
+}
+@views.html.components.includeScalaJs(debug)
+@views.html.components.includeAutocomplete(debug)
+<script>$(function() { new FormService('form-edit-employee'); })</script>

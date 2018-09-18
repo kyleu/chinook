@@ -1,0 +1,10 @@
+# Generated File
+# Remove a single MediaType entity from the system.
+mutation MediaTypeRemove {
+  mediaType {
+    remove(mediaTypeId: 0) {
+      mediaTypeId
+      name
+    }
+  }
+}

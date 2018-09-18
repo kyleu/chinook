@@ -1,0 +1,56 @@
+// Generated File
+{
+  "media.Album": {
+    "required": [
+      "albumId",
+      "title",
+      "artistId"
+    ],
+    "properties": {
+      "albumId": {
+        "type": "integer"
+      },
+      "title": {
+        "type": "string"
+      },
+      "artistId": {
+        "type": "integer"
+      }
+    }
+  },
+  "media.AlbumResult": {
+    "properties": {
+      "filters": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/common.Filter"
+        }
+      },
+      "orderBys": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/common.OrderBy"
+        }
+      },
+      "totalCount": {
+        "type": "integer"
+      },
+      "paging": {
+        "$ref": "#/components/schemas/common.PagingOptions"
+      },
+      "results": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/media.Album"
+        }
+      },
+      "durationMs": {
+        "type": "integer"
+      },
+      "occurred": {
+        "type": "string",
+        "example": "2018-01-01 00:00:00"
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+@* Generated File *@
+@(user: models.user.SystemUser, model: models.commerce.InvoiceLine, title: String, cancel: Call, act: Call, isNew: Boolean = false, debug: Boolean = false)(
+    implicit request: Request[AnyContent], session: Session, flash: Flash, traceData: util.tracing.TraceData
+)@traceData.logViewClass(getClass)@views.html.admin.layout.page(user, "explore", title) {
+  <form id="form-edit-invoiceLine" action="@act" method="post">
+    <div class="collection with-header">
+      <div class="collection-header">
+        <div class="right"><button type="submit" class="btn theme">@if(isNew) {Create} else {Save} Invoice Line</button></div>
+        <div class="right"><a href="@cancel" class="theme-text cancel-link">Cancel</a></div>
+        <h5><i class="fa @models.template.Icons.invoiceLine"></i> @title</h5>
+      </div>
+      <div class="collection-item">
+        <table>
+          <tbody>
+            @views.html.components.form.textField(selected = isNew, key = "invoiceLineId", title = "Invoice Line Id", value = Some(model.invoiceLineId.toString), nullable = false, dataType = "long")
+            @views.html.components.form.autocompleteField(
+              selected = isNew, key = "invoiceId", title = "Invoice Id", value = Some(model.invoiceId.toString), nullable = false, dataType = "long",
+              call = controllers.admin.commerce.routes.InvoiceController.autocomplete(), acType = ("invoice", "Invoice"), icon = models.template.Icons.invoice
+            )
+            @views.html.components.form.autocompleteField(
+              selected = isNew, key = "trackId", title = "Track Id", value = Some(model.trackId.toString), nullable = false, dataType = "long",
+              call = controllers.admin.media.routes.TrackController.autocomplete(), acType = ("track", "Track"), icon = models.template.Icons.track
+            )
+            @views.html.components.form.textField(selected = isNew, key = "unitPrice", title = "Unit Price", value = Some(model.unitPrice.toString), nullable = false, dataType = "decimal")
+            @views.html.components.form.textField(selected = isNew, key = "quantity", title = "Quantity", value = Some(model.quantity.toString), nullable = false, dataType = "long")
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </form>
+}
+@views.html.components.includeScalaJs(debug)
+@views.html.components.includeAutocomplete(debug)
+<script>$(function() { new FormService('form-edit-invoiceLine'); })</script>

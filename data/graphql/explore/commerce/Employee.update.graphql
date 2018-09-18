@@ -1,0 +1,23 @@
+# Generated File
+# Updates a single Employee entity using the provided fields.
+mutation EmployeeUpdate {
+  employee {
+    update(employeeId: 0, fields: [{k: "", v: ""}]) {
+      employeeId
+      lastName
+      firstName
+      title
+      reportsTo
+      birthDate
+      hireDate
+      address
+      city
+      state
+      country
+      postalCode
+      phone
+      fax
+      email
+    }
+  }
+}

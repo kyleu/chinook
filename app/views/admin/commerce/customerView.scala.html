@@ -1,0 +1,91 @@
+@* Generated File *@
+@(user: models.user.SystemUser, model: models.commerce.Customer, notes: Seq[models.note.Note], debug: Boolean)(
+    implicit request: Request[AnyContent], session: Session, flash: Flash, traceData: util.tracing.TraceData
+)@traceData.logViewClass(getClass)@views.html.admin.layout.page(user, "explore", s"Customer [${model.customerId}]") {
+  <div class="collection with-header">
+    <div class="collection-header">
+      <div class="right"><a class="theme-text" href="@controllers.admin.commerce.routes.CustomerController.editForm(model.customerId)">Edit</a></div>
+      <div class="right"><a class="theme-text remove-link" onclick="return confirm('Are you sure you want to remove this Customer?')" href="@controllers.admin.commerce.routes.CustomerController.remove(model.customerId)">Remove</a></div>
+      <h5>
+        <a class="theme-text" href="@controllers.admin.commerce.routes.CustomerController.list()"><i class="fa @models.template.Icons.customer"></i></a>
+        Customer [@model.customerId]
+      </h5>
+    </div>
+    <div class="collection-item">
+      <table class="highlight">
+        <tbody>
+          <tr>
+            <th>Customer Id</th>
+            <td>@model.customerId</td>
+          </tr>
+          <tr>
+            <th>First Name</th>
+            <td>@model.firstName</td>
+          </tr>
+          <tr>
+            <th>Last Name</th>
+            <td>@model.lastName</td>
+          </tr>
+          <tr>
+            <th>Company</th>
+            <td>@model.company</td>
+          </tr>
+          <tr>
+            <th>Address</th>
+            <td>@model.address</td>
+          </tr>
+          <tr>
+            <th>City</th>
+            <td>@model.city</td>
+          </tr>
+          <tr>
+            <th>State</th>
+            <td>@model.state</td>
+          </tr>
+          <tr>
+            <th>Country</th>
+            <td>@model.country</td>
+          </tr>
+          <tr>
+            <th>Postal Code</th>
+            <td>@model.postalCode</td>
+          </tr>
+          <tr>
+            <th>Phone</th>
+            <td>@model.phone</td>
+          </tr>
+          <tr>
+            <th>Fax</th>
+            <td>@model.fax</td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td>@model.email</td>
+          </tr>
+          <tr>
+            <th>Support Rep Id</th>
+            <td>
+              @model.supportRepId.getOrElse(util.NullUtils.str)
+              @model.supportRepId.map { v =>
+                <a class="theme-text" href="@controllers.admin.commerce.routes.EmployeeController.view(v)"><i class="fa @models.template.Icons.employee"></i></a>
+              }
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    @views.html.admin.note.notes(notes, "customer", "Customer", model.customerId)
+  </div>
+
+  <ul id="model-relations" class="collapsible" data-collapsible="expandable">
+    <li id="relation-invoice-customerId" data-table="invoice" data-field="customerId" data-singular="Invoice" data-plural="Invoices" data-url="@controllers.admin.commerce.routes.InvoiceController.byCustomerId(model.customerId, limit = Some(5))">
+      <div class="collapsible-header">
+        <i class="fa @models.template.Icons.invoice"></i>
+        <span class="title">Invoices</span>&nbsp;by Customer Id
+      </div>
+      <div class="collapsible-body"><span>Loading...</span></div>
+    </li>
+  </ul>
+  @views.html.components.includeScalaJs(debug)
+  <script>$(function() { new RelationService('@controllers.admin.commerce.routes.CustomerController.relationCounts(model.customerId)') });</script>
+}

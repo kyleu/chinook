@@ -1,0 +1,23 @@
+# Generated File
+# Creates a new Employee entity.
+mutation EmployeeCreate {
+  employee {
+    create(fields: [{k: "", v: ""}]) {
+      employeeId
+      lastName
+      firstName
+      title
+      reportsTo
+      birthDate
+      hireDate
+      address
+      city
+      state
+      country
+      postalCode
+      phone
+      fax
+      email
+    }
+  }
+}

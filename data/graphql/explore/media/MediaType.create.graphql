@@ -1,0 +1,10 @@
+# Generated File
+# Creates a new MediaType entity.
+mutation MediaTypeCreate {
+  mediaType {
+    create(fields: [{k: "", v: ""}]) {
+      mediaTypeId
+      name
+    }
+  }
+}

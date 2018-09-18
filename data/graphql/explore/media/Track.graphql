@@ -1,0 +1,31 @@
+# Generated File
+# Queries the system for Tracks.
+query Track {
+  track(
+    q: null, # Or string literal
+    filters: null, # Or filters of type `{ k: "", o: Equal, v: "" }`
+    orderBy: null, # Or orderBy of type `{ col: "", dir: Ascending }`
+    limit: null, # Or number
+    offset: null # Or number
+  ) {
+    totalCount
+    paging {
+      current
+      next
+      itemsPerPage
+    }
+    results {
+      trackId
+      name
+      albumId
+      mediaTypeId
+      genreId
+      composer
+      milliseconds
+      bytes
+      unitPrice
+    }
+    durationMs
+    occurred
+  }
+}

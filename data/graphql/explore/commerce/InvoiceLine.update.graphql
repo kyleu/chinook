@@ -1,0 +1,13 @@
+# Generated File
+# Updates a single InvoiceLine entity using the provided fields.
+mutation InvoiceLineUpdate {
+  invoiceLine {
+    update(invoiceLineId: 0, fields: [{k: "", v: ""}]) {
+      invoiceLineId
+      invoiceId
+      trackId
+      unitPrice
+      quantity
+    }
+  }
+}

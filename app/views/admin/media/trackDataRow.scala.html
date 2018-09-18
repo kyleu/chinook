@@ -1,0 +1,27 @@
+@* Generated File *@
+@(model: models.media.Track)<tr>
+  <td><a href="@controllers.admin.media.routes.TrackController.view(model.trackId)" class="theme-text">@model.trackId</a></td>
+  <td>@model.name</td>
+  <td>
+    @model.albumId
+    @model.albumId.map { v =>
+      <a class="theme-text" href="@controllers.admin.media.routes.AlbumController.view(v)">
+        <i class="fa @models.template.Icons.album"></i>
+      </a>
+    }
+  </td>
+  <td>
+    @model.mediaTypeId
+    <a class="theme-text" href="@controllers.admin.media.routes.MediaTypeController.view(model.mediaTypeId)">
+      <i class="fa @models.template.Icons.mediaType"></i>
+    </a>
+  </td>
+  <td>
+    @model.genreId
+    @model.genreId.map { v =>
+      <a class="theme-text" href="@controllers.admin.media.routes.GenreController.view(v)">
+        <i class="fa @models.template.Icons.genre"></i>
+      </a>
+    }
+  </td>
+</tr>

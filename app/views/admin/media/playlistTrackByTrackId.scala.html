@@ -1,0 +1,28 @@
+@* Generated File *@
+@(user: models.user.SystemUser, trackId: Long, modelSeq: Seq[models.media.PlaylistTrack], orderBy: Option[String], orderAsc: Boolean, limit: Int, offset: Int)(
+    implicit request: Request[AnyContent], session: Session, flash: Flash, traceData: util.tracing.TraceData
+)@traceData.logViewClass(getClass)
+@views.html.admin.explore.list(
+  user = user,
+  model = "Playlist Track",
+  modelPlural = "Playlist Tracks",
+  icon = models.template.Icons.playlistTrack,
+  cols = Seq(
+    "playlistId" -> "Playlist Id",
+    "trackId" -> "Track Id"
+  ),
+  orderBy = orderBy,
+  orderAsc = orderAsc,
+  totalCount = None,
+  rows = modelSeq.map(model => views.html.admin.media.playlistTrackDataRow(model)),
+  calls = models.result.web.ListCalls(
+    orderBy = Some(controllers.admin.media.routes.PlaylistTrackController.byTrackId(trackId, _, _, Some(limit), Some(0))),
+    search = None,
+    next = controllers.admin.media.routes.PlaylistTrackController.byTrackId(trackId, orderBy, orderAsc, Some(limit), Some(offset + limit)),
+    prev = controllers.admin.media.routes.PlaylistTrackController.byTrackId(trackId, orderBy, orderAsc, Some(limit), Some(offset - limit)),
+  ),
+  limit = limit,
+  offset = offset,
+  q = None,
+  fullUI = false
+)

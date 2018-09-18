@@ -1,0 +1,10 @@
+# Generated File
+# Remove a single Artist entity from the system.
+mutation ArtistRemove {
+  artist {
+    remove(artistId: 0) {
+      artistId
+      name
+    }
+  }
+}

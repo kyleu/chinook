@@ -1,0 +1,10 @@
+# Generated File
+# Creates a new Artist entity.
+mutation ArtistCreate {
+  artist {
+    create(fields: [{k: "", v: ""}]) {
+      artistId
+      name
+    }
+  }
+}

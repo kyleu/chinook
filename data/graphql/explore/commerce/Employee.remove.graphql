@@ -1,0 +1,23 @@
+# Generated File
+# Remove a single Employee entity from the system.
+mutation EmployeeRemove {
+  employee {
+    remove(employeeId: 0) {
+      employeeId
+      lastName
+      firstName
+      title
+      reportsTo
+      birthDate
+      hireDate
+      address
+      city
+      state
+      country
+      postalCode
+      phone
+      fax
+      email
+    }
+  }
+}

@@ -1,0 +1,52 @@
+// Generated File
+{
+  "media.PlaylistTrack": {
+    "required": [
+      "playlistId",
+      "trackId"
+    ],
+    "properties": {
+      "playlistId": {
+        "type": "integer"
+      },
+      "trackId": {
+        "type": "integer"
+      }
+    }
+  },
+  "media.PlaylistTrackResult": {
+    "properties": {
+      "filters": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/common.Filter"
+        }
+      },
+      "orderBys": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/common.OrderBy"
+        }
+      },
+      "totalCount": {
+        "type": "integer"
+      },
+      "paging": {
+        "$ref": "#/components/schemas/common.PagingOptions"
+      },
+      "results": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/media.PlaylistTrack"
+        }
+      },
+      "durationMs": {
+        "type": "integer"
+      },
+      "occurred": {
+        "type": "string",
+        "example": "2018-01-01 00:00:00"
+      }
+    }
+  }
+}

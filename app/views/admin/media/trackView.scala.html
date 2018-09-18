@@ -1,0 +1,90 @@
+@* Generated File *@
+@(user: models.user.SystemUser, model: models.media.Track, notes: Seq[models.note.Note], debug: Boolean)(
+    implicit request: Request[AnyContent], session: Session, flash: Flash, traceData: util.tracing.TraceData
+)@traceData.logViewClass(getClass)@views.html.admin.layout.page(user, "explore", s"Track [${model.trackId}]") {
+  <div class="collection with-header">
+    <div class="collection-header">
+      <div class="right"><a class="theme-text" href="@controllers.admin.media.routes.TrackController.editForm(model.trackId)">Edit</a></div>
+      <div class="right"><a class="theme-text remove-link" onclick="return confirm('Are you sure you want to remove this Track?')" href="@controllers.admin.media.routes.TrackController.remove(model.trackId)">Remove</a></div>
+      <h5>
+        <a class="theme-text" href="@controllers.admin.media.routes.TrackController.list()"><i class="fa @models.template.Icons.track"></i></a>
+        Track [@model.trackId]
+      </h5>
+    </div>
+    <div class="collection-item">
+      <table class="highlight">
+        <tbody>
+          <tr>
+            <th>Track Id</th>
+            <td>@model.trackId</td>
+          </tr>
+          <tr>
+            <th>Name</th>
+            <td>@model.name</td>
+          </tr>
+          <tr>
+            <th>Album Id</th>
+            <td>
+              @model.albumId.getOrElse(util.NullUtils.str)
+              @model.albumId.map { v =>
+                <a class="theme-text" href="@controllers.admin.media.routes.AlbumController.view(v)"><i class="fa @models.template.Icons.album"></i></a>
+              }
+            </td>
+          </tr>
+          <tr>
+            <th>Media Type Id</th>
+            <td>
+              @model.mediaTypeId
+              <a class="theme-text" href="@controllers.admin.media.routes.MediaTypeController.view(model.mediaTypeId)"><i class="fa @models.template.Icons.mediaType"></i></a>
+            </td>
+          </tr>
+          <tr>
+            <th>Genre Id</th>
+            <td>
+              @model.genreId.getOrElse(util.NullUtils.str)
+              @model.genreId.map { v =>
+                <a class="theme-text" href="@controllers.admin.media.routes.GenreController.view(v)"><i class="fa @models.template.Icons.genre"></i></a>
+              }
+            </td>
+          </tr>
+          <tr>
+            <th>Composer</th>
+            <td>@model.composer</td>
+          </tr>
+          <tr>
+            <th>Milliseconds</th>
+            <td>@model.milliseconds</td>
+          </tr>
+          <tr>
+            <th>Bytes</th>
+            <td>@model.bytes</td>
+          </tr>
+          <tr>
+            <th>Unit Price</th>
+            <td>@model.unitPrice</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    @views.html.admin.note.notes(notes, "track", "Track", model.trackId)
+  </div>
+
+  <ul id="model-relations" class="collapsible" data-collapsible="expandable">
+    <li id="relation-invoiceLine-trackId" data-table="invoiceLine" data-field="trackId" data-singular="Invoice Line" data-plural="Invoice Lines" data-url="@controllers.admin.commerce.routes.InvoiceLineController.byTrackId(model.trackId, limit = Some(5))">
+      <div class="collapsible-header">
+        <i class="fa @models.template.Icons.invoiceLine"></i>
+        <span class="title">Invoice Lines</span>&nbsp;by Track Id
+      </div>
+      <div class="collapsible-body"><span>Loading...</span></div>
+    </li>
+    <li id="relation-playlistTrack-trackId" data-table="playlistTrack" data-field="trackId" data-singular="Playlist Track" data-plural="Playlist Tracks" data-url="@controllers.admin.media.routes.PlaylistTrackController.byTrackId(model.trackId, limit = Some(5))">
+      <div class="collapsible-header">
+        <i class="fa @models.template.Icons.playlistTrack"></i>
+        <span class="title">Playlist Tracks</span>&nbsp;by Track Id
+      </div>
+      <div class="collapsible-body"><span>Loading...</span></div>
+    </li>
+  </ul>
+  @views.html.components.includeScalaJs(debug)
+  <script>$(function() { new RelationService('@controllers.admin.media.routes.TrackController.relationCounts(model.trackId)') });</script>
+}

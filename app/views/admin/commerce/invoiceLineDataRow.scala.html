@@ -1,0 +1,18 @@
+@* Generated File *@
+@(model: models.commerce.InvoiceLine)<tr>
+  <td><a href="@controllers.admin.commerce.routes.InvoiceLineController.view(model.invoiceLineId)" class="theme-text">@model.invoiceLineId</a></td>
+  <td>
+    @model.invoiceId
+    <a class="theme-text" href="@controllers.admin.commerce.routes.InvoiceController.view(model.invoiceId)">
+      <i class="fa @models.template.Icons.invoice"></i>
+    </a>
+  </td>
+  <td>
+    @model.trackId
+    <a class="theme-text" href="@controllers.admin.media.routes.TrackController.view(model.trackId)">
+      <i class="fa @models.template.Icons.track"></i>
+    </a>
+  </td>
+  <td>@model.unitPrice</td>
+  <td>@model.quantity</td>
+</tr>

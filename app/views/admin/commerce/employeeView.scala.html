@@ -1,0 +1,99 @@
+@* Generated File *@
+@(user: models.user.SystemUser, model: models.commerce.Employee, notes: Seq[models.note.Note], debug: Boolean)(
+    implicit request: Request[AnyContent], session: Session, flash: Flash, traceData: util.tracing.TraceData
+)@traceData.logViewClass(getClass)@views.html.admin.layout.page(user, "explore", s"Employee [${model.employeeId}]") {
+  <div class="collection with-header">
+    <div class="collection-header">
+      <div class="right"><a class="theme-text" href="@controllers.admin.commerce.routes.EmployeeController.editForm(model.employeeId)">Edit</a></div>
+      <div class="right"><a class="theme-text remove-link" onclick="return confirm('Are you sure you want to remove this Employee?')" href="@controllers.admin.commerce.routes.EmployeeController.remove(model.employeeId)">Remove</a></div>
+      <h5>
+        <a class="theme-text" href="@controllers.admin.commerce.routes.EmployeeController.list()"><i class="fa @models.template.Icons.employee"></i></a>
+        Employee [@model.employeeId]
+      </h5>
+    </div>
+    <div class="collection-item">
+      <table class="highlight">
+        <tbody>
+          <tr>
+            <th>Employee Id</th>
+            <td>@model.employeeId</td>
+          </tr>
+          <tr>
+            <th>Last Name</th>
+            <td>@model.lastName</td>
+          </tr>
+          <tr>
+            <th>First Name</th>
+            <td>@model.firstName</td>
+          </tr>
+          <tr>
+            <th>Title</th>
+            <td>@model.title</td>
+          </tr>
+          <tr>
+            <th>Reports To</th>
+            <td>
+              @model.reportsTo.getOrElse(util.NullUtils.str)
+              @model.reportsTo.map { v =>
+                <a class="theme-text" href="@controllers.admin.commerce.routes.EmployeeController.view(v)"><i class="fa @models.template.Icons.employee"></i></a>
+              }
+            </td>
+          </tr>
+          <tr>
+            <th>Birth Date</th>
+            <td>@model.birthDate</td>
+          </tr>
+          <tr>
+            <th>Hire Date</th>
+            <td>@model.hireDate</td>
+          </tr>
+          <tr>
+            <th>Address</th>
+            <td>@model.address</td>
+          </tr>
+          <tr>
+            <th>City</th>
+            <td>@model.city</td>
+          </tr>
+          <tr>
+            <th>State</th>
+            <td>@model.state</td>
+          </tr>
+          <tr>
+            <th>Country</th>
+            <td>@model.country</td>
+          </tr>
+          <tr>
+            <th>Postal Code</th>
+            <td>@model.postalCode</td>
+          </tr>
+          <tr>
+            <th>Phone</th>
+            <td>@model.phone</td>
+          </tr>
+          <tr>
+            <th>Fax</th>
+            <td>@model.fax</td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td>@model.email</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    @views.html.admin.note.notes(notes, "employee", "Employee", model.employeeId)
+  </div>
+
+  <ul id="model-relations" class="collapsible" data-collapsible="expandable">
+    <li id="relation-customer-supportRepId" data-table="customer" data-field="supportRepId" data-singular="Customer" data-plural="Customers" data-url="@controllers.admin.commerce.routes.CustomerController.bySupportRepId(model.employeeId, limit = Some(5))">
+      <div class="collapsible-header">
+        <i class="fa @models.template.Icons.customer"></i>
+        <span class="title">Customers</span>&nbsp;by Support Rep Id
+      </div>
+      <div class="collapsible-body"><span>Loading...</span></div>
+    </li>
+  </ul>
+  @views.html.components.includeScalaJs(debug)
+  <script>$(function() { new RelationService('@controllers.admin.commerce.routes.EmployeeController.relationCounts(model.employeeId)') });</script>
+}

@@ -1,0 +1,31 @@
+# Generated File
+# Queries the system for Invoices.
+query Invoice {
+  invoice(
+    q: null, # Or string literal
+    filters: null, # Or filters of type `{ k: "", o: Equal, v: "" }`
+    orderBy: null, # Or orderBy of type `{ col: "", dir: Ascending }`
+    limit: null, # Or number
+    offset: null # Or number
+  ) {
+    totalCount
+    paging {
+      current
+      next
+      itemsPerPage
+    }
+    results {
+      invoiceId
+      customerId
+      invoiceDate
+      billingAddress
+      billingCity
+      billingState
+      billingCountry
+      billingPostalCode
+      total
+    }
+    durationMs
+    occurred
+  }
+}

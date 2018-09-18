@@ -1,0 +1,42 @@
+@* Generated File *@
+@(user: models.user.SystemUser, model: models.media.Genre, notes: Seq[models.note.Note], debug: Boolean)(
+    implicit request: Request[AnyContent], session: Session, flash: Flash, traceData: util.tracing.TraceData
+)@traceData.logViewClass(getClass)@views.html.admin.layout.page(user, "explore", s"Genre [${model.genreId}]") {
+  <div class="collection with-header">
+    <div class="collection-header">
+      <div class="right"><a class="theme-text" href="@controllers.admin.media.routes.GenreController.editForm(model.genreId)">Edit</a></div>
+      <div class="right"><a class="theme-text remove-link" onclick="return confirm('Are you sure you want to remove this Genre?')" href="@controllers.admin.media.routes.GenreController.remove(model.genreId)">Remove</a></div>
+      <h5>
+        <a class="theme-text" href="@controllers.admin.media.routes.GenreController.list()"><i class="fa @models.template.Icons.genre"></i></a>
+        Genre [@model.genreId]
+      </h5>
+    </div>
+    <div class="collection-item">
+      <table class="highlight">
+        <tbody>
+          <tr>
+            <th>Genre Id</th>
+            <td>@model.genreId</td>
+          </tr>
+          <tr>
+            <th>Name</th>
+            <td>@model.name</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    @views.html.admin.note.notes(notes, "genre", "Genre", model.genreId)
+  </div>
+
+  <ul id="model-relations" class="collapsible" data-collapsible="expandable">
+    <li id="relation-track-genreId" data-table="track" data-field="genreId" data-singular="Track" data-plural="Tracks" data-url="@controllers.admin.media.routes.TrackController.byGenreId(model.genreId, limit = Some(5))">
+      <div class="collapsible-header">
+        <i class="fa @models.template.Icons.track"></i>
+        <span class="title">Tracks</span>&nbsp;by Genre Id
+      </div>
+      <div class="collapsible-body"><span>Loading...</span></div>
+    </li>
+  </ul>
+  @views.html.components.includeScalaJs(debug)
+  <script>$(function() { new RelationService('@controllers.admin.media.routes.GenreController.relationCounts(model.genreId)') });</script>
+}

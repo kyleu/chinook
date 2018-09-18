@@ -1,0 +1,17 @@
+# Generated File
+# Creates a new Track entity.
+mutation TrackCreate {
+  track {
+    create(fields: [{k: "", v: ""}]) {
+      trackId
+      name
+      albumId
+      mediaTypeId
+      genreId
+      composer
+      milliseconds
+      bytes
+      unitPrice
+    }
+  }
+}

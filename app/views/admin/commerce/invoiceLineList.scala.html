@@ -1,0 +1,31 @@
+@* Generated File *@
+@(user: models.user.SystemUser, totalCount: Option[Int], modelSeq: Seq[models.commerce.InvoiceLine], q: Option[String], orderBy: Option[String], orderAsc: Boolean, limit: Int, offset: Int)(
+    implicit request: Request[AnyContent], session: Session, flash: Flash, traceData: util.tracing.TraceData
+)@traceData.logViewClass(getClass)
+@views.html.admin.explore.list(
+  user = user,
+  model = "Invoice Line",
+  modelPlural = "Invoice Lines",
+  icon = models.template.Icons.invoiceLine,
+  cols = Seq(
+    "invoiceLineId" -> "Invoice Line Id",
+    "invoiceId" -> "Invoice Id",
+    "trackId" -> "Track Id",
+    "unitPrice" -> "Unit Price",
+    "quantity" -> "Quantity"
+  ),
+  totalCount = totalCount,
+  rows = modelSeq.map(model => views.html.admin.commerce.invoiceLineDataRow(model)),
+  orderBy = orderBy,
+  orderAsc = orderAsc,
+  calls = models.result.web.ListCalls(
+    newCall = Some(controllers.admin.commerce.routes.InvoiceLineController.createForm()),
+    orderBy = Some(controllers.admin.commerce.routes.InvoiceLineController.list(q, _, _, Some(limit), Some(0))),
+    search = Some(controllers.admin.commerce.routes.InvoiceLineController.list(None, orderBy, orderAsc, Some(limit), None)),
+    next = controllers.admin.commerce.routes.InvoiceLineController.list(q, orderBy, orderAsc, Some(limit), Some(offset + limit)),
+    prev = controllers.admin.commerce.routes.InvoiceLineController.list(q, orderBy, orderAsc, Some(limit), Some(offset - limit))
+  ),
+  limit = limit,
+  offset = offset,
+  q = q
+)

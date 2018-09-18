@@ -1,0 +1,35 @@
+@* Generated File *@
+@(user: models.user.SystemUser, model: models.commerce.Invoice, title: String, cancel: Call, act: Call, isNew: Boolean = false, debug: Boolean = false)(
+    implicit request: Request[AnyContent], session: Session, flash: Flash, traceData: util.tracing.TraceData
+)@traceData.logViewClass(getClass)@views.html.admin.layout.page(user, "explore", title) {
+  <form id="form-edit-invoice" action="@act" method="post">
+    <div class="collection with-header">
+      <div class="collection-header">
+        <div class="right"><button type="submit" class="btn theme">@if(isNew) {Create} else {Save} Invoice</button></div>
+        <div class="right"><a href="@cancel" class="theme-text cancel-link">Cancel</a></div>
+        <h5><i class="fa @models.template.Icons.invoice"></i> @title</h5>
+      </div>
+      <div class="collection-item">
+        <table>
+          <tbody>
+            @views.html.components.form.textField(selected = isNew, key = "invoiceId", title = "Invoice Id", value = Some(model.invoiceId.toString), nullable = false, dataType = "long")
+            @views.html.components.form.autocompleteField(
+              selected = isNew, key = "customerId", title = "Customer Id", value = Some(model.customerId.toString), nullable = false, dataType = "long",
+              call = controllers.admin.commerce.routes.CustomerController.autocomplete(), acType = ("customer", "Customer"), icon = models.template.Icons.customer
+            )
+            @views.html.components.form.localDateTimeField(selected = isNew, key = "invoiceDate", title = "Invoice Date", value = Some(model.invoiceDate), nullable = false)
+            @views.html.components.form.textField(selected = isNew, key = "billingAddress", title = "Billing Address", value = model.billingAddress.map(_.toString), nullable = true)
+            @views.html.components.form.textField(selected = isNew, key = "billingCity", title = "Billing City", value = model.billingCity.map(_.toString), nullable = true)
+            @views.html.components.form.textField(selected = isNew, key = "billingState", title = "Billing State", value = model.billingState.map(_.toString), nullable = true)
+            @views.html.components.form.textField(selected = isNew, key = "billingCountry", title = "Billing Country", value = model.billingCountry.map(_.toString), nullable = true)
+            @views.html.components.form.textField(selected = isNew, key = "billingPostalCode", title = "Billing Postal Code", value = model.billingPostalCode.map(_.toString), nullable = true)
+            @views.html.components.form.textField(selected = isNew, key = "total", title = "Total", value = Some(model.total.toString), nullable = false, dataType = "decimal")
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </form>
+}
+@views.html.components.includeScalaJs(debug)
+@views.html.components.includeAutocomplete(debug)
+<script>$(function() { new FormService('form-edit-invoice'); })</script>

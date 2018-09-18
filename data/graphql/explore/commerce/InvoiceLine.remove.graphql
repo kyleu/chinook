@@ -1,0 +1,13 @@
+# Generated File
+# Remove a single InvoiceLine entity from the system.
+mutation InvoiceLineRemove {
+  invoiceLine {
+    remove(invoiceLineId: 0) {
+      invoiceLineId
+      invoiceId
+      trackId
+      unitPrice
+      quantity
+    }
+  }
+}

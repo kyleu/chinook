@@ -1,0 +1,28 @@
+@* Generated File *@
+@(user: models.user.SystemUser, totalCount: Option[Int], modelSeq: Seq[models.media.MediaType], q: Option[String], orderBy: Option[String], orderAsc: Boolean, limit: Int, offset: Int)(
+    implicit request: Request[AnyContent], session: Session, flash: Flash, traceData: util.tracing.TraceData
+)@traceData.logViewClass(getClass)
+@views.html.admin.explore.list(
+  user = user,
+  model = "Media Type",
+  modelPlural = "Media Types",
+  icon = models.template.Icons.mediaType,
+  cols = Seq(
+    "mediaTypeId" -> "Media Type Id",
+    "name" -> "Name"
+  ),
+  totalCount = totalCount,
+  rows = modelSeq.map(model => views.html.admin.media.mediaTypeDataRow(model)),
+  orderBy = orderBy,
+  orderAsc = orderAsc,
+  calls = models.result.web.ListCalls(
+    newCall = Some(controllers.admin.media.routes.MediaTypeController.createForm()),
+    orderBy = Some(controllers.admin.media.routes.MediaTypeController.list(q, _, _, Some(limit), Some(0))),
+    search = Some(controllers.admin.media.routes.MediaTypeController.list(None, orderBy, orderAsc, Some(limit), None)),
+    next = controllers.admin.media.routes.MediaTypeController.list(q, orderBy, orderAsc, Some(limit), Some(offset + limit)),
+    prev = controllers.admin.media.routes.MediaTypeController.list(q, orderBy, orderAsc, Some(limit), Some(offset - limit))
+  ),
+  limit = limit,
+  offset = offset,
+  q = q
+)

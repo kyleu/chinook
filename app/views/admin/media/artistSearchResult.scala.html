@@ -1,0 +1,9 @@
+@* Generated File *@
+@(model: models.media.Artist, hit: String)<div class="search-result">
+  <div class="right">Artist</div>
+  <div>
+    <i class="fa @models.template.Icons.artist"></i>
+    <a class="theme-text" href="@controllers.admin.media.routes.ArtistController.view(model.artistId)">@model.artistId</a>
+  </div>
+  <em>@hit</em>
+</div>

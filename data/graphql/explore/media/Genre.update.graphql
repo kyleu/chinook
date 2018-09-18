@@ -1,0 +1,10 @@
+# Generated File
+# Updates a single Genre entity using the provided fields.
+mutation GenreUpdate {
+  genre {
+    update(genreId: 0, fields: [{k: "", v: ""}]) {
+      genreId
+      name
+    }
+  }
+}

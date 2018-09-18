@@ -1,0 +1,9 @@
+@* Generated File *@
+@(model: models.media.Playlist, hit: String)<div class="search-result">
+  <div class="right">Playlist</div>
+  <div>
+    <i class="fa @models.template.Icons.playlist"></i>
+    <a class="theme-text" href="@controllers.admin.media.routes.PlaylistController.view(model.playlistId)">@model.playlistId</a>
+  </div>
+  <em>@hit</em>
+</div>
